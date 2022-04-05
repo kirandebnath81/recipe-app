@@ -1,11 +1,4 @@
-.App {
-  display: flex;
-}
-@media (max-width: 420px) {
-  .App {
-    flex-direction: column;
-  }
-}
+
 
 .main {
   width: 100%;

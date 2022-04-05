@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  color: ${({ mode }) => (mode ? "white" : "black")};
   width: 80vw;
   margin-top: 50px;
   display: flex;
@@ -50,6 +51,15 @@ export const Description = styled.div`
   .btns {
     margin-bottom: 20px;
   }
+
+  .summaryBtn {
+    background-color: var(--back-ground-color);
+    color: white;
+    &:hover {
+      background-color: #000080;
+    }
+  }
+
   .instructions,
   .summary {
     font-weight: 400;
@@ -95,7 +105,9 @@ export const AddButton = styled.button`
   font-weight: 600;
 
   &:hover {
-    background-color: black;
+    background-color: #000080;
+    width: 210px;
+    height: 30px;
   }
 
   @media (max-width: 420px) {

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+/* border: 10px solid red; */
+
   width: 100%;
   height: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 635px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -21,7 +23,8 @@ export const Card = styled.div`
     height: 100%;
     border-radius: 10px;
     position: absolute;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 12px;
+    box-shadow: ${({ mode }) =>
+      mode ? "grey 0px 1px 1px  " : "rgba(0, 0, 0, 0.35) 0px 5px 15px"};
   }
 
   .title {

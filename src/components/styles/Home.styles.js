@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   /* border: 1px solid #000; */
+  color: ${({ mode }) => (mode ? "white" : "black")};
   width: 84vw;
   @media (max-width: 420px) {
     /* border: 1px solid #000; */
@@ -10,6 +11,24 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 15px;
+  }
+`;
+
+export const ContainerFluid = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 14px 0px;
+  div {
+    height: 22px;
+    margin-left: 185px;
+  }
+  @media (max-width: 420px) {
+    flex-direction: column;
+    margin: 0px 0px 20px;
+    div {
+      margin-left: 0px;
+    }
   }
 `;
 
@@ -17,13 +36,16 @@ export const Card = styled.div`
   width: 330px;
   height: 200px;
   position: relative;
+  border: ${({ mode }) => (mode ? "5px solid #0000" : "none")};
+  border-radius: 15px;
   img {
     width: 100%;
     height: 100%;
     border-radius: 20px;
     position: absolute;
     left: 0%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: ${({ mode }) =>
+      mode ? "grey 0px 1px 1px  " : "rgba(0, 0, 0, 0.35) 0px 5px 15px"};
   }
 
   div {

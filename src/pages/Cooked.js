@@ -11,14 +11,15 @@ import {
 } from "../components/styles/RecipeCart.styles";
 
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../DarkMode/Context";
 
 export const Cooked = () => {
   const { cooked, dispatch } = useContext(RecipeContext);
-
+  const themeMode = useContext(ThemeContext)[0];
   return (
     <Container>
       {cooked.map((recipe) => (
-        <Card key={recipe.id}>
+        <Card key={recipe.id} mode={themeMode}>
           <img src={recipe.image} alt="" />
           <Gradient />
           <div className="title">{recipe.title}</div>

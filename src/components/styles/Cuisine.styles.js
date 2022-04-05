@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -17,7 +17,7 @@ export const Container = styled.div`
 
   .cuisine {
     margin-top: 10px;
-    height: 75vh;
+    height: 100%;
     width: 84vw;
     display: flex;
     flex-wrap: wrap;
@@ -37,8 +37,7 @@ export const Container = styled.div`
       }
     }
     .cuisine {
-      height: auto;
-      width: auto;
+      width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -57,7 +56,9 @@ export const Card = styled.div`
     border-radius: 10px;
     position: absolute;
     left: 0%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px; */
+    box-shadow: ${({ mode }) =>
+      mode ? "grey 0px 1px 1px " : "rgba(0, 0, 0, 0.35) 0px 5px 15px"};
   }
 
   div {

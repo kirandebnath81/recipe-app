@@ -37,8 +37,9 @@ export const Category = () => {
 };
 
 const Container = styled.div`
-  margin-top: 90px;
-  height: 400px;
+  margin-top: 100px;
+  margin-bottom: 45px;
+  height: 410px;
   width: 120px;
   display: flex;
   flex-direction: column;

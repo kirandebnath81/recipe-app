@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
 import { Container, Card, Gradient } from "./styles/Home.styles";
@@ -8,8 +8,12 @@ import "@splidejs/splide/dist/css/splide.min.css";
 
 import { Link } from "react-router-dom";
 
+import { ThemeContext } from "../DarkMode/Context";
+
 export const Desserts = () => {
   const [desserts, setDesserts] = useState([]);
+
+  const themeMode = useContext(ThemeContext)[0];
 
   useEffect(() => {
     getDesserts();
@@ -41,7 +45,7 @@ export const Desserts = () => {
   };
 
   return (
-    <Container>
+    <Container mode={themeMode}>
       <h3>Popular Desserts</h3>
       <Splide
         options={{
@@ -55,7 +59,7 @@ export const Desserts = () => {
         {desserts.map((dessert) => (
           <SplideSlide key={dessert.id}>
             <Link to={`recipe/${dessert.id}`}>
-              <Card>
+              <Card mode={themeMode}>
                 <img src={dessert.image} alt="" />
                 <Gradient />
                 <div>{dessert.title}</div>

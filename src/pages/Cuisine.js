@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
 
@@ -6,10 +6,13 @@ import { Button } from "../components/styles/Home.styles";
 import { Container, Card, Gradient } from "../components/styles/Cuisine.styles";
 
 import { Link, useParams } from "react-router-dom";
+import { ThemeContext } from "../DarkMode/Context";
 
 export const Cuisine = () => {
   const [cuisines, setCuisines] = useState([]);
   const [tag, setTag] = useState("");
+
+  const themeMode = useContext(ThemeContext)[0];
 
   const { name } = useParams();
 
@@ -72,7 +75,7 @@ export const Cuisine = () => {
         {cuisines.map((cuisine) => (
           <div key={cuisine.id}>
             <Link to={`/recipe/${cuisine.id}`}>
-              <Card key={cuisine.id}>
+              <Card key={cuisine.id} mode={themeMode}>
                 <img src={cuisine.image} alt="" />
                 <Gradient />
                 <div>{cuisine.title}</div>

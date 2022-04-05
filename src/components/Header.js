@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
 
 import {
   StyledForm,
   StyledInput,
   StyledHeader,
   StyledLink,
+  StyledNavLink,
 } from "./styles/Header.styles";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 import { BiSearch } from "react-icons/bi";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../DarkMode/Context";
 
 export const Header = () => {
   const [input, setInput] = useState("");
 
   const navigate = useNavigate();
+
+  const themeMode = useContext(ThemeContext)[0];
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -25,10 +27,12 @@ export const Header = () => {
   };
 
   return (
-    <StyledHeader>
+    <StyledHeader mode={themeMode}>
       <div>
         <GiForkKnifeSpoon className="icon" />
-        <StyledLink to={"/"}>Foodie</StyledLink>
+        <StyledLink to={"/"} mode={themeMode}>
+          Foodie
+        </StyledLink>
       </div>
 
       <StyledForm onSubmit={submitHandler}>
@@ -41,26 +45,21 @@ export const Header = () => {
       </StyledForm>
       <ul>
         <li>
-          <StyledNavLink to={"/wishList"}>WishList</StyledNavLink>
+          <StyledNavLink to={"/wishList"} mode={themeMode}>
+            WishList
+          </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to={"/cooked"}>Cooked</StyledNavLink>
+          <StyledNavLink to={"/cooked"} mode={themeMode}>
+            Cooked
+          </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to={"/favourite"}>Favourite</StyledNavLink>
+          <StyledNavLink to={"/favourite"} mode={themeMode}>
+            Favourite
+          </StyledNavLink>
         </li>
       </ul>
     </StyledHeader>
   );
 };
-
-const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  color: var(--back-ground-color);
-  font-weight: bold;
-  padding-bottom: 2px;
-
-  &.active {
-    border-bottom: 2px solid orangered;
-  }
-`;

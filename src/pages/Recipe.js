@@ -11,6 +11,7 @@ import {
   Description,
   AddButton,
 } from "../components/styles/Recipe.styles";
+import { ThemeContext } from "../DarkMode/Context";
 
 export const Recipe = () => {
   const [recipe, setRecipe] = useState({});
@@ -20,6 +21,7 @@ export const Recipe = () => {
   const { recipeId } = useParams();
 
   const { dispatch } = useContext(RecipeContext);
+  const themeMode = useContext(ThemeContext)[0];
 
   useEffect(() => {
     getRecipe(recipeId);
@@ -53,7 +55,7 @@ export const Recipe = () => {
   };
 
   return (
-    <Container>
+    <Container mode={themeMode}>
       <Wrapper>
         <AddButton
           onClick={() =>
@@ -71,7 +73,7 @@ export const Recipe = () => {
       <Description>
         <div className="btns">
           <Button onClick={() => setView(true)} style={styles.instruction}>
-            Instrctions
+            Instructions
           </Button>
           <Button onClick={() => setView(false)} style={styles.ingredient}>
             Ingredients
@@ -85,7 +87,10 @@ export const Recipe = () => {
               dangerouslySetInnerHTML={{ __html: recipe.instructions }}
             ></div>
 
-            <Button onClick={() => setViewSummary(!viewSummary)}>
+            <Button
+              className="summaryBtn"
+              onClick={() => setViewSummary(!viewSummary)}
+            >
               Summary
             </Button>
             {viewSummary && (

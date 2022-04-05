@@ -16,4 +16,6 @@ export const Home = () => {
 
 const Wrapper = styled.div`
   width: 100%;
+  /* width: 50vw; */
+  /* border: 2px solid #000; */
 `;

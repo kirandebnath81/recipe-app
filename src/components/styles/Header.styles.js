@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export const StyledHeader = styled.header`
-  /* border: 1px solid #000; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   width: 83.7vw;
   margin-left: 104px;
+  color: ${({ mode }) => (mode ? "white" : "")};
 
   div {
     width: 150px;
@@ -83,5 +83,19 @@ export const StyledLink = styled(Link)`
   font-size: 2.2rem;
   font-weight: 900;
   font-family: "Playfair Display", serif;
-  color: black;
+
+  color: ${({ mode }) => (mode ? "white" : "var(--back-ground-color)")};
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: var(--back-ground-color);
+  font-weight: 500;
+  padding-bottom: 2px;
+  color: ${({ mode }) => (mode ? "white" : "")};
+  font-family: "Poppins", sans-serif;
+
+  &.active {
+    border-bottom: 2px solid orangered;
+  }
 `;

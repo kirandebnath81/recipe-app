@@ -1,17 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
-import styled from "styled-components";
-import { Container, Card, Gradient, Button } from "./styles/Home.styles";
+
+import {
+  Container,
+  Card,
+  Gradient,
+  Button,
+  ContainerFluid,
+} from "./styles/Home.styles";
 
 import { SplideSlide, Splide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../DarkMode/Context";
 
 export const Meal = () => {
   const [meals, setMeals] = useState([]);
   const [tag, setTag] = useState("");
+
+  const themeMode = useContext(ThemeContext)[0];
 
   useEffect(() => {
     getMeal(tag);
@@ -52,7 +61,7 @@ export const Meal = () => {
   };
 
   return (
-    <Container>
+    <Container mode={themeMode}>
       <ContainerFluid>
         <h3>Popular Meals</h3>
         <div>
@@ -80,7 +89,7 @@ export const Meal = () => {
         {meals.map((meal) => (
           <SplideSlide key={meal.id}>
             <Link to={`/recipe/${meal.id}`}>
-              <Card>
+              <Card mode={themeMode}>
                 <img src={meal.image} alt="" />
                 <Gradient />
                 <div>{meal.title}</div>
@@ -92,20 +101,3 @@ export const Meal = () => {
     </Container>
   );
 };
-
-const ContainerFluid = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 14px 0px;
-  div {
-    height: 22px;
-    margin-left: 185px;
-  }
-  @media (max-width: 420px) {
-    flex-direction: column;
-    margin: 0px 0px 20px;
-    div {
-      margin-left: 0px;
-    }
-  }
-`;

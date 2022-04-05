@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
 import styled from "styled-components";
 import { Container, Card, Gradient } from "../components/styles/Cuisine.styles";
 import { Link, useParams } from "react-router-dom";
 
+import { ThemeContext } from "../DarkMode/Context";
+
 export const Searched = () => {
   const [cuisines, setCuisines] = useState([]);
 
   const { SearchedCuisine } = useParams();
+
+  const themeMode = useContext(ThemeContext)[0];
 
   useEffect(() => {
     getCuisines(SearchedCuisine);
@@ -42,7 +46,7 @@ export const Searched = () => {
         {cuisines.map((cuisine) => (
           <div key={cuisine.id}>
             <Link to={`/recipe/${cuisine.id}`}>
-              <Card>
+              <Card mode={themeMode}>
                 <img src={cuisine.image} alt="" />
                 <Gradient />
                 <div>{cuisine.title}</div>
