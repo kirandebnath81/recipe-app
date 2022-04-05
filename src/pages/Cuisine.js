@@ -29,7 +29,7 @@ export const Cuisine = () => {
           },
         }
       );
-      console.log(data.recipes);
+
       setCuisines(data.recipes);
     } catch (error) {
       console.log("error occured", error);

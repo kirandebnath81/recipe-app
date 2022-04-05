@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 
 import { RecipeContext } from "../context/Context";
@@ -19,7 +18,7 @@ export const Favourite = () => {
   return (
     <Container>
       {favourite.map((recipe) => (
-        <Card>
+        <Card key={recipe.id}>
           <img src={recipe.image} alt="" />
           <Gradient />
           <div className="title">{recipe.title}</div>

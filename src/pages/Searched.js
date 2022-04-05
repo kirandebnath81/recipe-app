@@ -40,13 +40,15 @@ export const Searched = () => {
       </div>
       <div className="cuisine">
         {cuisines.map((cuisine) => (
-          <Link to={`/recipe/${cuisine.id}`}>
-            <Card key={cuisine.id}>
-              <img src={cuisine.image} alt="" />
-              <Gradient />
-              <div>{cuisine.title}</div>
-            </Card>
-          </Link>
+          <div key={cuisine.id}>
+            <Link to={`/recipe/${cuisine.id}`}>
+              <Card>
+                <img src={cuisine.image} alt="" />
+                <Gradient />
+                <div>{cuisine.title}</div>
+              </Card>
+            </Link>
+          </div>
         ))}
       </div>
     </Container>

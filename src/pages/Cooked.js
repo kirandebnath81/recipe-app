@@ -1,5 +1,3 @@
-
-
 import React, { useContext } from "react";
 
 import { RecipeContext } from "../context/Context";
@@ -17,11 +15,10 @@ import { Link } from "react-router-dom";
 export const Cooked = () => {
   const { cooked, dispatch } = useContext(RecipeContext);
 
-  console.log(cooked);
   return (
     <Container>
       {cooked.map((recipe) => (
-        <Card>
+        <Card key={recipe.id}>
           <img src={recipe.image} alt="" />
           <Gradient />
           <div className="title">{recipe.title}</div>

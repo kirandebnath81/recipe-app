@@ -32,7 +32,6 @@ export const Recipe = () => {
       { params: { apiKey: process.env.REACT_APP_API_KEY } }
     );
 
-    console.log(data);
     setRecipe(data);
     setIngredients(data.extendedIngredients);
 

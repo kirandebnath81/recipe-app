@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 export const Wishlist = () => {
   const { wishList, dispatch } = useContext(RecipeContext);
 
-  console.log(wishList);
   return (
     <Container>
       {wishList.map((recipe) => (
